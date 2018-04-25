@@ -1,0 +1,38 @@
+//  Created by Seymanur Mutlu on 25.04.2018.
+//  Copyright © 2018 Seymanur Mutlu. All rights reserved.
+//
+
+#include <stdio.h>
+
+int main(int argc, const char * argv[]) {
+    int a; //istenildigi gibi 1.degisken
+    int b; //ve 2.degiskeni tanimladik.
+    
+    printf("a degerini giriniz :");
+    scanf("%d",&a); //kalvyeden aldigimiz degeri a degiskeni icerisine yerlestiriyoruz.
+    
+    printf("b degerini giriniz : ");
+    scanf("%d",&b); //klavyeden aldigimiz degeri b degisketi icerisine yerlestiriyoruz.
+    
+    //teklik-ciftlik durumu sayinin 2'ye gore modunu alarak kontrol edebiliriz.
+    
+    int modA=a%2; //a'nın modunu alip baska degiskene atadim az sonra if() yapisinda kullanırken
+    int modB=b%2; //kolaylik olmasi acisindan.
+    
+    if(modA==1 && modB==1){ //a ve b tek ise [ && isareti 've' anlamindadir]
+        printf("\n%d\n",a+b); //toplamlarini ekrana yaz.
+        //burada toplam icin ayri bir degisken tanimlayip onu da yazdirabilirdik.Fazla yer kaplamamasi icin boyle yaptik.
+    }
+    
+    else if (modA==1 && modB==0) //a tek ve b cift ise
+        printf("\n%d\n",a-b); /*burada suslu parantez kullanmamamın sebebi if veya else if gibi yapilar ilk ';' 'e kadar
+                           olan kisimdaki komutlari uygular ve sonrasini algilamalar, tek komut vereceksek {} yapisi
+                           gereksiz olur.*/
+    
+    else if (modA==0 && modB==1) //a cift ve b tek ise
+        printf("\n%d\n",b-a);
+    
+    else //en son durum ikisinde cift olabilecegi durum oldugu icin else kullandık.
+        printf("\n%d\n",a+b);
+    return 0;
+}
