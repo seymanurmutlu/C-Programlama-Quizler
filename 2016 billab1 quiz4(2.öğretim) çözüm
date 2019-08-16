@@ -1,0 +1,39 @@
+//
+//  main.c
+//  2016 billab1 quiz4(2.öğretim)
+//
+//  Created by Seymanur Mutlu on 16.08.2019.
+//  Copyright © 2019 Seymanur Mutlu. All rights reserved.
+//
+
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, const char * argv[]) {
+    int temp,sayi,armstrong = 0;
+    int array[3]; //alacagimiz sayi 3 basamakli oldugundan dolayi 3 elemanli bir dizi tanimladik.
+    //buradaki amaç, her bir basamagi dizi iceriside ayri ayri tutmak.
+    
+    printf("Uc basamakli bir sayi giriniz : ");
+    scanf("%d",&sayi);
+    int sayi_copy = sayi; //sayi uzerinde islem yapacagimiz icin ilk aldigimiz sayi o haliyle kalmayacak.
+    //tekrardan erismek kolay olsun diye bir kopyasini aliyoruz.
+    
+    for (int i=0; i <3; i++) { //sayinin uc basamakli oldugunu bildigimiz icin 3 defa donecek bir dongu yarattik
+        temp = sayi%10; //sayinin 10'a gore modunu aldigimizda son basamagi almis oluyoruz. bunu temp degiskeninin icine alip
+        //sonrasinda dizinin icerisine ekleyecegiz.
+        
+        sayi = sayi / 10; //sayinin tum basamaklarini kolay alabilmek icin her defasinda 10'a boluyoruz
+        
+        array[i] = temp;//aldigimiz temp degiskenini diziye ekledik
+        
+        armstrong += pow(array[i],3); //bu islem icin tekrar bir dongu acmak yerine dizinin icine ekledikten hemen
+        //sonra sayinin kupunu alip armstrong uzerine ekleme yapiyorum.
+    }
+
+    if(sayi_copy == armstrong){
+        printf("%d sayisi armstrong bir sayidir.",sayi_copy);
+    }else{
+        printf("%d sayisi armstrong bir sayi degildir.",sayi_copy);
+    }
+}
