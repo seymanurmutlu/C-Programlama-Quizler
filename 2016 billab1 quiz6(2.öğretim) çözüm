@@ -10,20 +10,30 @@
 #include <math.h>
 
 int main(int argc, const char * argv[]) {
-    int bigArr[] = {13, 10, 4, 1, 9, 2, 25, 30, 8, 60};
+    //oncelikle bizden istenen iki diziyi tanimliyoruz.
+    int bigArr[] = {13, 10, 4, 1, 9, 2, 25, 30, 8, 60}; 
     int littArr[] = {1, 9 ,2};
+    //bu degiskeni kontrol amacli kullanacagim ve henuz islem yapmadim bu yuzden 
+    //benim icin hayir anlamina gelecek olan 0'i atiyorum.
     int var_mi = 0;
     
     printf("Buyuk dizinin elemanlari : \n");
     for (int i = 0; i < 10; i++) {
         printf("%d ",bigArr[i]);
-    }
+    } //bizden istenildigi gibi dizi elemanlarini tek tek yazdiriyoruz
     
     printf("\nKucuk dizinin elemanlari : \n");
     for (int i = 0; i < 3; i++) {
         printf("%d ",littArr[i]);
-    }
-    printf("\n");
+    } //bizden istenildigi gibi dizi elemanlarini tek tek yazdiriyoruz
+    
+    printf("\n"); //gorunumu guzel olsun diye bir satir bosluk koydum
+    
+    //bu noktada dizi icerisinde arama yapmaya basliyoruz, buyuk olan dizinin elemanlarini gezmeye basliyorum
+    //ve eger buyuk olan dizinin herhangi bir elemani, kucuk olan dizinin ilk elemani ile uyusuyorsa 
+    //her iki dizinin de bir sonraki elemanlari uyusuyor mu diye bakar, eger uyusuyorsa
+    //tekrardan ayni islemi yapar. Her kosul saglandiginda en icteki dongude yazan var_mi = 1 calisir 
+    //ve for blogu tamamlandiginda var_mi degiskeni kontrol edilir.
     for (int i = 0 ; i < 10; i++ ) {
         if(bigArr[i] == littArr[0]){
             if(bigArr[i+1] == littArr[1]){
