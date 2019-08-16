@@ -31,4 +31,5 @@ int main(int argc, const char * argv[]) {
     else //en son durum ikisinde cift olabilecegi durum oldugu icin else kullandık.
         printf("\n%d\n",a+b);
     return 0;
+    
 }
