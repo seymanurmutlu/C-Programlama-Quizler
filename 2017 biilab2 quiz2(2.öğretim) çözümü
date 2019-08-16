@@ -1,0 +1,49 @@
+//
+//  main.c
+//  billab2-quiz02-2ogr
+//
+//  Created by Seymanur Mutlu on 16.08.2019.
+//  Copyright © 2019 Seymanur Mutlu. All rights reserved.
+//
+
+#include <stdio.h>
+#include <math.h>
+
+void kokBul(int a, int b, int c, int *x1,int *x2, int *delta){
+    //oncelikle delta degerini hesaplayip pointer tipindeki degiskenimin icerisine atamasini yaptim.
+    //bu islemi ilk yapmamin nedeni daha sonraki adimlarda delta'nin degerine gore hareket edecek olmam,
+    //delta'nin degerini hesapladiktan sonra benden istenen kosullar icin if blogu yazarak programimizi yazmayi sonlandiriyoruz.
+    *delta = b*b - 4*a*c;
+    if(*delta < 0 ){
+        printf("Denklemin Reel Kokleri Yoktur.\n");
+        exit(1); //burada exit yapmamin nedeni ise if blogundan sonra printf fonksiyonlari calisiyor olmasi eger bu blok icine
+        //girildikten sonra program akisa devam ederse daha onceden atama yapmis oldugumuz x1 = 0 ve x2 = 0 degerlerini gosterecektir.
+    }else if(*delta == 0){
+        *x1 = (-b + sqrt(*delta))/2*a;
+        *x2 = *x1; //delta sifira esit oldugunda, koklerimin esit oldugu bilgisine dayanarak iki pointer degiskeninin degerlerini birbirine esitledim.
+    }else{
+        *x1 = (-b + sqrt(*delta))/2*a;
+        *x2 = (-b - sqrt(*delta))/2*a;
+    }
+    printf("Denklemin Kokleri : \n");
+    printf("x1 = %d\n",*x1);
+    printf("x2 = %d\n",*x2);
+}
+
+
+int main(int argc, const char * argv[]) {
+    int a, b, c =0 ; //denklem icinde kullanilmasi gereken degiskenler tanimlandi
+    int *x1, *x2, *delta = 0;
+    printf("Denklem katsayilarini girin :\n");
+    printf("a = ");
+    scanf("%d",&a);
+    printf("b = ");
+    scanf("%d",&b);
+    printf("c = ");
+    scanf("%d",&c);
+    printf("--------------\n");//gerekli olan degiskenler alindi.
+    kokBul(a, b, c, &x1, &x2, &delta); //daha onceden pointer seklinde olusturdugumuz degiskenleri de
+    //fonksiyona gonderiyoruz, bizden istenen fonksiyonun tipi void oldugundan dolayi zaten bu pointer degiskenlerin
+    //degerlerini fonksiyon icerisinde degisterecegimizi anlamistik. Simdi fonksiyonun icerigine bakabiliriz.
+    
+}
